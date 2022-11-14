@@ -9,9 +9,9 @@
     <DockPanel LastChildFill="True">
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_Файл">
-                <MenuItem Header="_Открыть" Command="{Binding OpenFileCommand}">
-                </MenuItem>
+                <MenuItem Header="_Открыть" Command="{Binding OpenFileCommand}"/>
             </MenuItem>
         </Menu>
+
     </DockPanel>
 </Window>
