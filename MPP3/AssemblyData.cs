@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace MPP3
 {
-    public class AssemblyInfo
+    public class AssemblyData
     {
         public string Name { get; }
         public ObservableCollection<NamespaceInfo> NamespaceList { get; set; }
-        public AssemblyInfo(string name)
+        public AssemblyData(string name)
         {
             Name = name;
             NamespaceList = new ObservableCollection<NamespaceInfo>();

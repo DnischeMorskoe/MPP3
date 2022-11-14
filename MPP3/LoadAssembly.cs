@@ -7,10 +7,10 @@ namespace MPP3
 {
     public class LoadAssembly
     {
-        public static AssemblyInfo GetAssemblyData(string DLLpath)
+        public static AssemblyData GetAssemblyInfo(string DLLpath)
         {
             Assembly assembly = Assembly.LoadFrom(DLLpath);
-            AssemblyInfo assemblyInfo = new AssemblyInfo(assembly.GetName().Name);
+            AssemblyData assemblyInfo = new AssemblyData(assembly.GetName().Name);
             var namespaces = assembly.GetTypes().Select(type => type.Namespace).Distinct().ToList().Where(ns => ns != null).ToList();
             namespaces.ForEach(ns =>
             {

@@ -13,7 +13,7 @@ namespace WPFAssemblyBrowser
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string assemblyFileName;
-        private ObservableCollection<AssemblyInfo> assemblyInfo;
+        private ObservableCollection<AssemblyData> assemblyInfo;
         public string AssemblyFileName
         {
             get => assemblyFileName;
@@ -24,7 +24,7 @@ namespace WPFAssemblyBrowser
             }
         }
 
-        public ObservableCollection<AssemblyInfo> AssemblyData
+        public ObservableCollection<AssemblyData> AssemblyInfo
         {
             get => assemblyInfo;
             set

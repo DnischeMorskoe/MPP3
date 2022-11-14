@@ -3,15 +3,40 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFAssemblyBrowser"
+        xmlns:assemblyBrowser="clr-namespace:MPP3;assembly=MPP3"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel LastChildFill="True">
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_Файл">
-                <MenuItem Header="_Открыть" Command="{Binding OpenFileCommand}"/>
-            </MenuItem>
-        </Menu>
+        <Button x:Name="BtnOpenFile" Width="100" Height="30" Command="{Binding OpenFileCommand}">
+            Открыть
+        </Button>
 
+        <TreeView DockPanel.Dock="Top" ItemsSource="{Binding AssemblyInfo, UpdateSourceTrigger=PropertyChanged}">
+            <TreeView.Resources>
+                <HierarchicalDataTemplate DataType="{x:Type assemblyBrowser:AssemblyData}" >
+
+                    <TreeViewItem Header="{Binding Path=Name}">
+                        <TreeViewItem Header="Namespaces"
+                                      ItemsSource="{Binding Path=NamespaceList}" />
+                    </TreeViewItem>
+
+                </HierarchicalDataTemplate>
+
+                <HierarchicalDataTemplate DataType="{x:Type assemblyBrowser:NamespaceInfo}">
+                    <TreeViewItem Header="{Binding Path=Name}">
+                        <TreeViewItem Header="Classes"
+                                      ItemsSource="{Binding Path=ClassList}" />
+                    </TreeViewItem>
+                </HierarchicalDataTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type assemblyBrowser:ClassInfo}"
+                                          ItemsSource="{Binding Path=ComponentsList}">
+                    <TextBlock Text="{Binding Path=Name}" />
+                </HierarchicalDataTemplate>
+                <DataTemplate DataType="{x:Type assemblyBrowser:ClassComponentsInfo}">
+                    <TreeViewItem Header="{Binding Name}"
+                                  ItemsSource="{Binding Components}" />
+                </DataTemplate>
+            </TreeView.Resources>
+        </TreeView>
     </DockPanel>
 </Window>

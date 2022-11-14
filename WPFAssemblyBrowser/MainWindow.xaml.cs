@@ -23,6 +23,7 @@ namespace WPFAssemblyBrowser
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new ViewModel(new Model());
         }
     }
 }
